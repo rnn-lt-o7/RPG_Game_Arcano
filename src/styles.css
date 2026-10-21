@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cinzel", "Palatino Linotype", Palatino, serif;
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --color-ink: #120c09;
+  --color-ink-deep: #0b0705;
+  --color-bark: #1c1410;
+  --color-line: #3d2c22;
+  --color-parchment: #f3e6d0;
+  --color-mute: #a89478;
+  --color-gold: #c9a36a;
+  --color-ember: #e07a3d;
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-ink-deep);
+    color: var(--color-parchment);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-line bg-bark/80 p-4 shadow-2xl backdrop-blur-md;
+  }
+
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl px-4 text-sm font-semibold transition active:scale-95 disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn:focus-visible,
+  .icon-btn:focus-visible,
+  .seed-input:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+
+  .btn-primary {
+    @apply bg-ember text-ink hover:bg-gold;
+  }
+
+  .btn-ghost {
+    @apply border border-line bg-bark/70 text-parchment hover:border-gold;
+  }
+
+  .icon-btn {
+    @apply inline-flex size-11 items-center justify-center rounded-full border border-line bg-bark/70 text-parchment;
+  }
+
+  .seed-input {
+    @apply min-h-12 w-full rounded-2xl border border-line bg-ink/70 px-4 font-display text-lg tracking-widest text-gold uppercase;
+  }
+}
+
+.fx-shake {
+  animation: shake 0.32s linear;
+}
+
+.fx-shake-hard {
+  animation: shake-hard 0.38s linear;
+}
+
+.fx-lunge {
+  animation: lunge 0.28s ease-out;
+}
+
+.fx-lunge-player {
+  animation: lunge-up 0.28s ease-out;
+}
+
+.fx-flash {
+  position: absolute;
+  inset: 0;
+  background: white;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  animation: flash 0.28s ease-out forwards;
+}
+
+.fx-float {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-shadow: 0 2px 0 var(--color-ink);
+  animation: floatup 0.9s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes shake {
+  0%,
+  100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(-4px, 2px, 0) rotate(-0.3deg); }
+  50% { transform: translate3d(4px, -2px, 0) rotate(0.3deg); }
+  75% { transform: translate3d(-3px, 1px, 0) rotate(-0.2deg); }
+}
+
+@keyframes shake-hard {
+  0%,
+  100% { transform: translate3d(0, 0, 0); }
+  20% { transform: translate3d(-8px, 3px, 0) rotate(-0.6deg); }
+  40% { transform: translate3d(7px, -3px, 0) rotate(0.6deg); }
+  60% { transform: translate3d(-5px, 2px, 0) rotate(-0.3deg); }
+  80% { transform: translate3d(4px, -1px, 0) rotate(0.3deg); }
+}
+
+@keyframes lunge {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(12px) scale(1.03); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes lunge-up {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-8px) scale(1.04); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  25% { opacity: 0.55; }
+  100% { opacity: 0; }
+}
+
+@keyframes floatup {
+  0% { opacity: 0; transform: translate(-50%, 8px) scale(0.85); }
+  18% { opacity: 1; transform: translate(-50%, 0) scale(1.06); }
+  100% { opacity: 0; transform: translate(-50%, -42px) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-shake,
+  .fx-shake-hard,
+  .fx-lunge,
+  .fx-lunge-player,
+  .fx-flash,
+  .fx-float {
+    animation: none;
+  }
+}
