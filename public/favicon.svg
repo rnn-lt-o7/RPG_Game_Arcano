@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Sorte Arcana">
+  <rect width="32" height="32" rx="8" fill="#120c09"/>
+  <rect x="9" y="4.5" width="14" height="23" rx="2.2" fill="#f3e6d0" stroke="#c9a36a" stroke-width="1.6"/>
+  <circle cx="16" cy="13.5" r="3.5" fill="#e07a3d"/>
+  <circle cx="16" cy="13.5" r="1.35" fill="#120c09"/>
+  <path d="M12.4 19.6h7.2M13.6 22h4.8" stroke="#c9a36a" stroke-width="1.15" stroke-linecap="round"/>
+</svg>
